@@ -1,0 +1,8 @@
+.ck.ck-editor {
+	overflow-x: hidden;
+}
+
+.ck.ck-editor__editable  {
+	min-height: 400px;
+}
+
