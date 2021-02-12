@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePromoSlide;
 use App\Models\PromoSlide;
 use Illuminate\Http\Request;
 
@@ -38,25 +39,17 @@ class PromoSlideController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request, $parentID = 1)
+	public function store(StorePromoSlide $request, $parentID = 1)
 	{
-		if ($request->btn_functional == '1') {
-			$request->validate([
-				'img'      => 'required',
-				'title'    => 'required',
-				'text'     => 'required',
-				'btn_link' => 'required',
-			]);
-		} else {
-			$request->validate([
-				'img'   => 'required',
-				'title' => 'required',
-				'text'  => 'required',
-			]);
-		}
+		// валидацию перенес в App\Http\Requests\StorePromoSlide
+		
+		// Получаем максимальный order
+		$maxOrder = PromoSlide::where('promo_slider_id', $parentID)->max('order');
 
 		$data = $request->all();
-		$data['promo_slider_id'] = (int) $parentID;
+		$data['order'] = $maxOrder + 1;
+		$data['promo_slider_id'] = $parentID;
+		
 		PromoSlide::create($data);
 		return redirect()->route('promo-slides.index');
 	}
