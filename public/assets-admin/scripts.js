@@ -1,5 +1,12 @@
 jQuery(function($) {
 	
+	// $.ajaxSetup({
+	// 	headers: {
+	// 		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	// 	}
+	// });
+	
+	
 	// Sidebar links
 	var curLoc = window.location.protocol + '//' + window.location.host + window.location.pathname;
 	$('.nav-sidebar .nav-link[href = "' + curLoc +'"]').addClass('active').closest('ul').prev('.nav-link').addClass('active');
@@ -45,7 +52,7 @@ jQuery(function($) {
 		ClassicEditor
 		.create(document.querySelector('#textarea_content'), {
 			ckfinder: {
-				uploadUrl: '/admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json',
+				uploadUrl: '/assets-admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json',
 				options: {
 					plugins: ['ImageInfo']
 				}
@@ -134,12 +141,14 @@ jQuery(function($) {
 	
 	
 	// .js-choose-img
-	$(document).on('click', '.js-choose-img, .js-choose-img + .img-wrap a.no-img', function(e) {
+	$(document).on('click', '.js-choose-img', function(e) {
 		e.preventDefault();
 		var $formGroup = $(this).closest('.form-group');
+		var $button    = $formGroup.find('.js-choose-img');
 		var $link      = $formGroup.find('.img-wrap a');
 		var $img       = $formGroup.find('.img-wrap img');
 		var $file      = $formGroup.find('.img-wrap .file-name');
+		var $imgInput  = $formGroup.find('.img-input');
 		
 		CKFinder.modal({
 			chooseFiles: true,
@@ -149,20 +158,94 @@ jQuery(function($) {
 				finder.on( 'files:choose', function( evt ) {
 					var file = evt.data.files.first();
 					var fName = decodeURI(file.getUrl()).replace(/^.*(\\|\/|\:)/, '');
-					$link.attr('href', file.getUrl()).removeClass('no-img');
-					$img.attr('src', file.getUrl());
+					$link.attr('href', file.getUrl()).removeClass('js-choose-img');
+					$img.attr({
+						'src': file.getUrl(),
+						'alt': fName,
+						'title': fName
+					});
 					$file.text( fName );
+					$imgInput.val( file.getUrl() );
 				});
 	
 				finder.on( 'file:choose:resizedImage', function( evt ) {
 					var fName = decodeURI(evt.data.resizedUrl).replace(/^.*(\\|\/|\:)/, '');
-					$link.attr('href', evt.data.resizedUrl).removeClass('no-img');
-					$img.attr('src', evt.data.resizedUrl);
+					$link.attr('href', evt.data.resizedUrl).removeClass('js-choose-img');
+					$img.attr({
+						'src': evt.data.resizedUrl,
+						'alt': fName,
+						'title': fName
+					});
 					$file.text( fName );
+					$imgInput.val( evt.data.resizedUrl );
 				});
 			}
 		});
 		
 	});
+	
+	
+	// .js-slide-btn-functional
+	$('.js-slide-btn-functional').each(function(e) {
+		var $radio = $('input[name="btn_functional"]', this);
+		var $blockLink = $('.js-btn-link', this);
+		
+		$radio.on('change', function() {
+			if ( $(this).filter(':checked').val() == 1 ) {
+				$blockLink.css('display', 'block');
+			} else {
+				$blockLink.css('display', 'none');
+			}
+		}).trigger('change');
+	});
+	
+	
+	// jQuery UI sortable for .tbody-sortable
+	$('.tbody-sortable').each(function() {
+		$sortable = $(this);
+		$(window).on('load resize', function() {
+			$sortable.find('td').each(function() {
+				$(this).css({'width': ''});
+				$(this).css({'width': $(this).outerWidth()});
+			});
+			$sortable.sortable({
+				axis: 'y',
+				opacity: 0.5,
+				handle: 'td.id',
+				forcePlaceholderSize: true,
+				zIndex: 999999,
+				stop: function() {
+					var arr = {};
+					
+					$.map($(this).find('tr'), function(el) {
+						var curID    = $(el).data('id');
+						var curIndex = $(el).index();
+						arr[curID] = curIndex;
+					});
+					
+					$('body').addClass('body-show-overlay');
+					
+					$.ajax({
+						url: '/admin/sort-promo-slides',
+						type: 'GET',
+						data: arr,
+						success: function(response) {
+							if (response == 'ok') {
+								$('body').removeClass('body-show-overlay');
+							};
+						}
+					});
+				}
+			});
+		});
+	});
+	
+	
+	
+	
+	
+	
+	  
+	
 
 });

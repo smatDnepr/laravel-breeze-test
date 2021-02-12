@@ -32,7 +32,7 @@ $config['authentication'] = function () {
 	$request = Illuminate\Http\Request::capture();
 	$request->setMethod('GET');
 	$app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
-	if ( Auth::check() && Auth::user()->hasRole('administrator') ) {
+	if (Auth::check() && Auth::user()->hasRole('administrator')) {
 		return true;
 	} else {
 		header('HTTP/1.0 403 Forbidden');
@@ -50,40 +50,40 @@ $config['licenseKey']  = '*H?K-*1**-Z**J-*1**-*L**-1*S*-2**L';
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir
 
 $config['privateDir'] = array(
-    'backend' => 'default',
-    'tags'   => '.ckfinder/tags',
-    'logs'   => '.ckfinder/logs',
-    'cache'  => '.ckfinder/cache',
-    'thumbs' => '.ckfinder/cache/thumbs',
+	'backend' => 'default',
+	'tags'   => '.ckfinder/tags',
+	'logs'   => '.ckfinder/logs',
+	'cache'  => '.ckfinder/cache',
+	'thumbs' => '.ckfinder/cache/thumbs',
 );
 
 /*============================ Images and Thumbnails ==================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_images
 
 $config['images'] = array(
-    'maxWidth'  => 1600,
-    'maxHeight' => 1600,
-    'quality'   => 80,
-    'sizes' => array(
-        'small'  => array('width' => 400, 'height' => 400, 'quality' => 80),
-        'medium' => array('width' => 800, 'height' => 800, 'quality' => 80),
-        'large'  => array('width' => 1200, 'height' => 1200, 'quality' => 80)
-    )
+	'maxWidth'  => 1600,
+	'maxHeight' => 1600,
+	'quality'   => 80,
+	'sizes' => array(
+		'small'  => array('width' => 400, 'height' => 400, 'quality' => 80),
+		'medium' => array('width' => 800, 'height' => 800, 'quality' => 80),
+		'large'  => array('width' => 1200, 'height' => 1200, 'quality' => 80)
+	)
 );
 
 /*=================================== Backends ========================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_backends
 
 $config['backends'][] = array(
-    'name'         => 'default',
-    'adapter'      => 'local',
+	'name'         => 'default',
+	'adapter'      => 'local',
 	//'baseUrl'      => '/public/ckfinder/userfiles/',
 	//'baseUrl'      => '/public/uploads/',
 	'baseUrl'      => '/uploads/',
-//  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
-    'chmodFiles'   => 0777,
-    'chmodFolders' => 0755,
-    'filesystemEncoding' => 'UTF-8',
+	//  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
+	'chmodFiles'   => 0777,
+	'chmodFolders' => 0755,
+	'filesystemEncoding' => 'UTF-8',
 );
 
 /*================================ Resource Types =====================================*/
@@ -92,21 +92,21 @@ $config['backends'][] = array(
 $config['defaultResourceTypes'] = '';
 
 $config['resourceTypes'][] = array(
-    'name'              => 'Files', // Single quotes not allowed.
-    'directory'         => 'files',
-    'maxSize'           => 0,
-    'allowedExtensions' => 'bmp,gif,jpeg,jpg,png,7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gz,gzip,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,ppt,pptx,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip',
-    'deniedExtensions'  => '',
-    'backend'           => 'default'
+	'name'              => 'Files', // Single quotes not allowed.
+	'directory'         => 'files',
+	'maxSize'           => 0,
+	'allowedExtensions' => 'bmp,gif,jpeg,jpg,png,7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gz,gzip,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,ppt,pptx,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip',
+	'deniedExtensions'  => '',
+	'backend'           => 'default'
 );
 
 $config['resourceTypes'][] = array(
-    'name'              => 'Images',
-    'directory'         => 'images',
-    'maxSize'           => 0,
-    'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
-    'deniedExtensions'  => '',
-    'backend'           => 'default'
+	'name'              => 'Images',
+	'directory'         => 'images',
+	'maxSize'           => 0,
+	'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
+	'deniedExtensions'  => '',
+	'backend'           => 'default'
 );
 
 /*================================ Access Control =====================================*/
@@ -116,22 +116,22 @@ $config['roleSessionVar'] = 'CKFinder_UserRole';
 
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_accessControl
 $config['accessControl'][] = array(
-    'role'                => '*',
-    'resourceType'        => '*',
-    'folder'              => '/',
+	'role'                => '*',
+	'resourceType'        => '*',
+	'folder'              => '/',
 
-    'FOLDER_VIEW'         => true,
-    'FOLDER_CREATE'       => true,
-    'FOLDER_RENAME'       => true,
-    'FOLDER_DELETE'       => true,
+	'FOLDER_VIEW'         => true,
+	'FOLDER_CREATE'       => true,
+	'FOLDER_RENAME'       => true,
+	'FOLDER_DELETE'       => true,
 
-    'FILE_VIEW'           => true,
-    'FILE_CREATE'         => true,
-    'FILE_RENAME'         => true,
-    'FILE_DELETE'         => true,
+	'FILE_VIEW'           => true,
+	'FILE_CREATE'         => true,
+	'FILE_RENAME'         => true,
+	'FILE_DELETE'         => true,
 
-    'IMAGE_RESIZE'        => true,
-    'IMAGE_RESIZE_CUSTOM' => true
+	'IMAGE_RESIZE'        => true,
+	'IMAGE_RESIZE_CUSTOM' => true
 );
 
 
@@ -162,9 +162,9 @@ $config['plugins'] = array();
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_cache
 
 $config['cache'] = array(
-    'imagePreview' => 24 * 3600,
-    'thumbnails'   => 24 * 3600 * 365,
-    'proxyCommand' => 0
+	'imagePreview' => 24 * 3600,
+	'thumbnails'   => 24 * 3600 * 365,
+	'proxyCommand' => 0
 );
 
 /*============================ Temp Directory settings ================================*/

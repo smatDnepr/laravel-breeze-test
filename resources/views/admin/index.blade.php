@@ -5,11 +5,11 @@
 
 
 @section('content')
-	<section class="content">
-		<div class="card">
-			<div class="card-body">
-				тут контент "Главная страница"
-			</div>
-		</div>
-	</section>
+<section class="content">
+    <div class="card">
+        <div class="card-body">
+            тут контент "Главная страница"
+        </div>
+    </div>
+</section>
 @endsection

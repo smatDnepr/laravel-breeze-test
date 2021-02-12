@@ -1,0 +1,90 @@
+.ck.ck-editor {
+	overflow-x: hidden;
+}
+
+.ck.ck-editor__editable  {
+	min-height: 400px;
+}
+
+.form-group .img-wrap {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+
+
+.form-group .img-wrap a {
+	display: block;
+	width: 100%;
+	margin-right: 10px;
+	-webkit-flex-shrink: 0;
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+	border: 1px solid transparent;
+	-webkit-border-radius: .25rem;
+	-moz-border-radius: .25rem;
+	border-radius: .25rem;
+	overflow: hidden;
+}
+
+.is-invalid + .img-wrap a {
+	border-color: #dc3545;
+}
+
+.form-group .img-wrap a img {
+	display: block;
+	width: 100%;
+}
+
+.form-group .img-wrap .file-name {
+	font-size: 16px;
+}
+
+.ui-sortable-handle {
+	cursor: move;
+}
+
+body > .overlay {
+	display: block;
+	position: fixed;
+	z-index: 100000;
+	left: 0;
+	top: 0;
+	bottom: 100%;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	opacity: 0;
+	-webkit-transition: opacity 0.3s ease 0.3s, bottom 0s ease 0.6s;
+	-moz-transition: opacity 0.3s ease 0.3s, bottom 0s ease 0.6s;
+	-ms-transition: opacity 0.3s ease 0.3s, bottom 0s ease 0.6s;
+	-o-transition: opacity 0.3s ease 0.3s, bottom 0s ease 0.6s;
+	transition: opacity 0.3s ease 0.3s, bottom 0s ease 0.6s;
+}
+
+body > .overlay i {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	color: #ffffff;
+	font-size: 3em;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+body.body-show-overlay > .overlay {
+	opacity: 1;
+	bottom: 0;
+	-webkit-transition: opacity 0.3s ease 0s;
+	-moz-transition: opacity 0.3s ease 0s;
+	-ms-transition: opacity 0.3s ease 0s;
+	-o-transition: opacity 0.3s ease 0s;
+	transition: opacity 0.3s ease 0s;
+}
