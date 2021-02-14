@@ -27,8 +27,8 @@ $config = array();
 // https://qna.habr.com/q/354351
 
 $config['authentication'] = function () {
-	require dirname(__DIR__, 3) . '/vendor/autoload.php';
-	$app = require_once  dirname(__DIR__, 3) . '/bootstrap/app.php';
+	require dirname(__DIR__, 2) . '/vendor/autoload.php';
+	$app = require_once  dirname(__DIR__, 2) . '/bootstrap/app.php';
 	$request = Illuminate\Http\Request::capture();
 	$request->setMethod('GET');
 	$app->make('Illuminate\Contracts\Http\Kernel')->handle($request);
@@ -156,7 +156,7 @@ $config['debug'] = false;
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_plugins
 
 $config['pluginsDirectory'] = __DIR__ . '/plugins';
-$config['plugins'] = array('ThumbPregenerator');
+$config['plugins'] = array();
 
 /*================================ Cache settings =====================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_cache

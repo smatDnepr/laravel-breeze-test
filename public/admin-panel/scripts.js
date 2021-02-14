@@ -17,6 +17,7 @@ jQuery(function($) {
 	if ( document.querySelector('#fileManager') != null) {
 		var h = document.querySelector('.content-wrapper').scrollHeight - document.querySelector('.content-wrapper>.content-header').scrollHeight + 40;
 		CKFinder.widget( 'fileManager', {
+			language: 'en',
 			width: '100%',
 			height: h,
 			plugins: [ 'ImageInfo' ]
@@ -52,7 +53,7 @@ jQuery(function($) {
 		ClassicEditor
 		.create(document.querySelector('#textarea_content'), {
 			ckfinder: {
-				uploadUrl: '/assets-admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json',
+				uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json',
 				options: {
 					plugins: ['ImageInfo']
 				}
@@ -140,7 +141,7 @@ jQuery(function($) {
 	}
 	
 	
-	// .js-choose-img
+	// Modal .js-choose-img
 	$(document).on('click', '.js-choose-img', function(e) {
 		e.preventDefault();
 		var $formGroup = $(this).closest('.form-group');
@@ -151,6 +152,8 @@ jQuery(function($) {
 		var $imgInput  = $formGroup.find('.img-input');
 		
 		CKFinder.modal({
+			plugins: ['ImageInfo'],
+			language: 'en',
 			chooseFiles: true,
 			width: 800,
 			height: 600,
@@ -242,10 +245,7 @@ jQuery(function($) {
 	
 	
 	
-	
-	
-	
-	  
+
 	
 
 });

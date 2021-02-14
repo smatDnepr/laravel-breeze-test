@@ -30,6 +30,11 @@ class MainController extends Controller
 		return view('admin.fileManager');
 	}
 	
+	public function test()
+	{
+		return view('admin.test');
+	}
+	
 	
 	
 	

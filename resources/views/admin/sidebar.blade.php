@@ -22,6 +22,12 @@
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="{{ route('admin.test') }}" class="nav-link">
+						<i class="nav-icon far fa-folder-open"></i>
+						<p>test</p>
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="{{ route('admin.editor') }}" class="nav-link">
 						<i class="nav-icon fas fa-edit"></i>
 						<p>Редактор</p>
