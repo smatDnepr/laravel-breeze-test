@@ -16,23 +16,23 @@ class MainController extends Controller
 	
 	public function editor()
 	{
-		return view('admin.editor');
+		return view('admin.testEditor.index');
 	}
 	
 	public function fileUpload()
 	{
-		return view('admin.fileUpload');
+		return view('admin.testFileUpload.index');
 	}
 	
 	
 	public function fileManager()
 	{
-		return view('admin.fileManager');
+		return view('admin.testFileManager.index');
 	}
 	
 	public function test()
 	{
-		return view('admin.test');
+		
 	}
 	
 	

@@ -58,7 +58,7 @@ body > .overlay {
 	top: 0;
 	bottom: 100%;
 	right: 0;
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.5);
 	opacity: 0;
 	-webkit-transition: opacity 0.3s ease 0.3s, bottom 0s ease 0.6s;
 	-moz-transition: opacity 0.3s ease 0.3s, bottom 0s ease 0.6s;

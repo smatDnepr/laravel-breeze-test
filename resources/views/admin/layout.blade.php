@@ -11,9 +11,9 @@
 </head>
 <body class="hold-transition sidebar-mini">
 
-	<div class="overlay">
-		<i class="fas fa-2x fa-sync-alt fa-spin"></i>
-	</div>
+    <div class="overlay">
+        <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+    </div>
 
     <div class="wrapper">
         @include('admin.sidebar')
@@ -21,10 +21,20 @@
         <div class="content-wrapper">
             @include('admin.contentHeader')
             @include('admin.contentAlerts')
-            @yield('content')
+            <section class="content">
+                <div class="card card-primary card-outline card-outline-tabs">
+				
+					@if(Str::of(request()->route()->uri)->contains('admin/promo-slides'))
+						<div class="card-header p-0 border-bottom-0">
+							@include('admin.landingPage.tabs')
+						</div>
+					@endif
+
+                    @yield('content')
+                </div>
+            </section>
         </div>
     </div>
-
 
     <script src="/admin-panel/plugins/jquery/jquery.min.js"></script>
     <script src="/admin-panel/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -35,10 +45,10 @@
     <script src="/admin-panel/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/admin-panel/dist/js/adminlte.min.js"></script>
     {{-- <script src="/admin-panel/dist/js/demo.js"></script> --}}
-	
+
     <script src="/ckeditor5/build/ckeditor.js"></script>
     <script src="/ckfinder/ckfinder.js"></script>
-	
+
     <script src="/admin-panel/scripts.js"></script>
 </body>
 </html>

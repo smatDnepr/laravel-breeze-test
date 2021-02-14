@@ -22,10 +22,10 @@ Route::prefix('admin')->middleware(['role:administrator'])->group(function () {
 	Route::get('file-upload', [App\Http\Controllers\Admin\MainController::class, 'fileUpload'])->name('admin.fileUpload');
 	Route::get('file-manager', [App\Http\Controllers\Admin\MainController::class, 'fileManager'])->name('admin.fileManager');
 	Route::resource('promo-slides', App\Http\Controllers\Admin\PromoSlideController::class);
-	// Сортировка слайдов PromoSlide
-	Route::get('sort-promo-slides', [App\Http\Controllers\Admin\SortPromoSlidesController::class, 'sortPromoSlides']);
 	
-	Route::get('test', [App\Http\Controllers\Admin\MainController::class, 'test'])->name('admin.test');
+	// AJAX cортировка слайдов PromoSlide
+	Route::get('sort-promo-slides', [App\Http\Controllers\Admin\SortPromoSlidesController::class, 'sortPromoSlides']);
+
 });
 
 
