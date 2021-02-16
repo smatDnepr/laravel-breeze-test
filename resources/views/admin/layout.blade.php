@@ -16,17 +16,17 @@
     </div>
 
     <div class="wrapper">
-        @include('admin.sidebar')
+        @include('admin.templateParts.sidebar')
 
         <div class="content-wrapper">
-            @include('admin.contentHeader')
-            @include('admin.contentAlerts')
+            @include('admin.templateParts.contentHeader')
+            @include('admin.templateParts.contentAlerts')
             <section class="content">
                 <div class="card card-primary card-outline card-outline-tabs">
 				
 					@if(Str::of(request()->route()->uri)->contains('admin/promo-slides'))
 						<div class="card-header p-0 border-bottom-0">
-							@include('admin.landingPage.tabs')
+							@include('admin.templateParts.tabsLandingPage')
 						</div>
 					@endif
 

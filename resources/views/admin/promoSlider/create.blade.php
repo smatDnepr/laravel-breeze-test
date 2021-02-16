@@ -9,7 +9,7 @@
         @method('post')
 		
 		<div class="card-header">
-			<button class="btn btn-secondary" type="button" onclick="window.location.href='{{ route('promo-slides.index') }}'; return false;">Назад</button>
+			<button class="btn btn-outline-primary" type="button" onclick="window.location.href='{{ route('promo-slides.index') }}'; return false;">Назад</button>
             <button type="submit" class="btn btn-primary">Сохранить</button>
 		</div>
 
@@ -70,7 +70,7 @@
         </div>
 
         <div class="card-footer">
-			<button class="btn btn-secondary" type="button" onclick="window.location.href='{{ route('promo-slides.index') }}'; return false;">Назад</button>
+			<a class="btn btn-outline-primary" href="{{ route('promo-slides.index') }}">Назад</a>
             <button type="submit" class="btn btn-primary">Сохранить</button>
         </div>
 		

@@ -55,6 +55,24 @@
 					</a>
 				</li>
 				
+				<li class="nav-item">
+					<a href="{{ route('partners.index') }}" class="nav-link @if(Str::of(request()->route()->uri)->contains('admin/partners')) active @endif">
+						<i class="nav-icon fas fa-users"></i>
+						<p>Мои партнеры</p>
+					</a>
+				</li>
+				
+				<li class="nav-item">
+					<a href="{{ route('extra-data.index') }}" class="nav-link @if(Str::of(request()->route()->uri)->contains('admin/extra-data')) active @endif">
+						<i class="nav-icon far fa-address-book"></i>
+						<p>Дополн. данные</p>
+					</a>
+				</li>
+				
+				
+				
+				
+				
 
 
 
