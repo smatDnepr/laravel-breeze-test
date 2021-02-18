@@ -7,7 +7,7 @@ use App\Http\Requests\StorePromoSlide;
 use App\Models\PromoSlide;
 use Illuminate\Http\Request;
 
-class PromoSlideController extends Controller
+class LandingPromoSlidesController extends Controller
 {
 	/**
 	 * Display a listing of the resource.
@@ -20,7 +20,7 @@ class PromoSlideController extends Controller
 			->orderBy('order')
 			->get();
 
-		return view('admin.promoSlider.index', compact('slides'));
+		return view('admin.landing.promoSlider.index', compact('slides'));
 	}
 
 	/**
@@ -30,7 +30,7 @@ class PromoSlideController extends Controller
 	 */
 	public function create()
 	{
-		return view('admin.promoSlider.create');
+		return view('admin.landing.promoSlider.create');
 	}
 
 	/**
@@ -74,7 +74,7 @@ class PromoSlideController extends Controller
 	public function edit($id)
 	{
 		$slide = PromoSlide::where('id', $id)->first();
-		return view('admin.promoSlider.edit', compact('slide'));
+		return view('admin.landing.promoSlider.edit', compact('slide'));
 	}
 
 	/**
@@ -103,9 +103,7 @@ class PromoSlideController extends Controller
 
 		$slide = PromoSlide::find($id);
 		$slide->update($request->all());
-
 		$request->session()->flash('success', 'Изменения сохранены');
-
 		return redirect()->route('promo-slides.index');
 	}
 

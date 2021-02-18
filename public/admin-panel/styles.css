@@ -88,3 +88,25 @@ body.body-show-overlay > .overlay {
 	-o-transition: opacity 0.3s ease 0s;
 	transition: opacity 0.3s ease 0s;
 }
+
+textarea.editor-light {
+	opacity: 0;
+}
+
+textarea.editor-light + .ck-editor .ck-editor__editable {
+	min-height: 150px;
+}
+
+textarea.is-invalid + .ck-editor {
+	-webkit-box-shadow: 0 0 0 1px #dc3545;
+	box-shadow: 0 0 0 1px #dc3545;
+}
+
+.card.card-outline-tabs .card-header a.btn-outline-primary.btn-back {
+	border-top-width: 1px !important;
+	border-top-color: #007bff;
+}
+
+.card.card-outline-tabs .card-header a.btn-outline-primary.btn-back:hover {
+	border-top-color: #0069d9;
+}

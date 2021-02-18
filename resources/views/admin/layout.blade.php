@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Admin panel - @yield('title')</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="/admin-panel/plugins/fontawesome-free/css/all.min.css">
@@ -24,7 +25,7 @@
             <section class="content">
                 <div class="card card-primary card-outline card-outline-tabs">
 				
-					@if(Str::of(request()->route()->uri)->contains('admin/promo-slides'))
+					@if(Str::of(request()->route()->uri)->contains('admin/landing/'))
 						<div class="card-header p-0 border-bottom-0">
 							@include('admin.templateParts.tabsLandingPage')
 						</div>

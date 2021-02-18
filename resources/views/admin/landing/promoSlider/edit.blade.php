@@ -4,12 +4,12 @@
 
 @section('content')
 <div class="card-body p-0">
-    <form action="{{ route('promo-slides.update', ['promo_slide' => $slide->id]) }}" method="post">
+    <form action="{{ route('landing.promo-slides.update', ['promo_slide' => $slide->id]) }}" method="post">
         @csrf
         @method('put')
 		
 		<div class="card-header">
-			<button class="btn btn-outline-primary" type="button" onclick="window.location.href='{{ route('promo-slides.index') }}'; return false;">Назад</button>
+			<button class="btn btn-outline-primary" type="button" onclick="window.location.href='{{ route('landing.promo-slides.index') }}'; return false;">Назад</button>
             <button type="submit" class="btn btn-primary">Сохранить изменения</button>
 		</div>
 		
@@ -80,7 +80,7 @@
         </div>
 		
         <div class="card-footer">
-			<a class="btn btn-outline-primary" href="{{ route('promo-slides.index') }}">Назад</a>
+			<a class="btn btn-outline-primary" href="{{ route('landing.promo-slides.index') }}">Назад</a>
             <button type="submit" class="btn btn-primary">Сохранить изменения</button>
         </div>
     </form>

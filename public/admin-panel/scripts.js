@@ -1,16 +1,26 @@
 jQuery(function($) {
 	
-	// $.ajaxSetup({
-	// 	headers: {
-	// 		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	// 	}
-	// });
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
 	
 	
 	// Sidebar links
 	var curLoc = window.location.protocol + '//' + window.location.host + window.location.pathname;
 	$('.nav-sidebar .nav-link[href = "' + curLoc +'"]').addClass('active').closest('ul').prev('.nav-link').addClass('active');
 	$('.nav-sidebar .nav-link[href = "' + curLoc +'"]').parents('.nav-item').addClass('menu-open');
+	
+	
+	// Tabs links
+	$('.nav-tabs .nav-link').filter(function() {
+		var href = $(this).attr('href');
+		return curLoc.indexOf( href.substring(0, href.length - 2) ) >= 0;
+	}).addClass('active');
+	
+	
+	$('.nav-tabs .nav-link[href = "' + curLoc +'"]').addClass('active');
 	
 
 	// #fileManager
@@ -25,6 +35,27 @@ jQuery(function($) {
 	}
 	
 
+	// .editor-light
+	$('.editor-light').each(function() {
+		var editorLight = $(this)[0];
+		ClassicEditor
+			.create(editorLight, {
+				mediaEmbed: {toolbar: ['|']},
+				image: {toolbar: ['|']},
+				toolbar: {
+					items: [
+						'bold',
+						'italic',
+						'link'
+					]
+				},
+				language: 'en'
+			})
+			.catch(function(error) {
+				console.error(error);
+			});
+	});
+	
 	// #textare_description
 	if ( document.querySelector('#textare_description') != null) {
 		ClassicEditor
@@ -123,7 +154,10 @@ jQuery(function($) {
 					'imageResize',
 					'|',
 					'imageTextAlternative'
-				]
+				],
+				upload: {
+					types: [ 'jpeg', 'png', 'gif', 'bmp', 'svg+xml' ]
+				}
 			},
 			table: {
 				contentToolbar: [
@@ -205,7 +239,9 @@ jQuery(function($) {
 	
 	// jQuery UI sortable for .tbody-sortable
 	$('.tbody-sortable').each(function() {
-		$sortable = $(this);
+		var $sortable = $(this);
+		var ajaxURL = $(this).data('ajax-sort-url') || '';
+		
 		$(window).on('load resize', function() {
 			$sortable.find('td').each(function() {
 				$(this).css({'width': ''});
@@ -220,6 +256,8 @@ jQuery(function($) {
 				stop: function() {
 					var arr = {};
 					
+					if ( ! ajaxURL.length ) return;
+					
 					$.map($(this).find('tr'), function(el) {
 						var curID    = $(el).data('id');
 						var curIndex = $(el).index();
@@ -229,8 +267,8 @@ jQuery(function($) {
 					$('body').addClass('body-show-overlay');
 					
 					$.ajax({
-						url: '/admin/sort-promo-slides',
-						type: 'GET',
+						url: ajaxURL,
+						type: 'post',
 						data: arr,
 						success: function(response) {
 							if (response == 'ok') {

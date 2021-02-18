@@ -95,7 +95,7 @@ $config['resourceTypes'][] = array(
 	'name'              => 'Files', // Single quotes not allowed.
 	'directory'         => 'files',
 	'maxSize'           => 0,
-	'allowedExtensions' => 'bmp,gif,jpeg,jpg,png,7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gz,gzip,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,ppt,pptx,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip',
+	'allowedExtensions' => 'bmp,gif,jpeg,jpg,png,svg,7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gz,gzip,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,ppt,pptx,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip',
 	'deniedExtensions'  => '',
 	'backend'           => 'default'
 );
@@ -104,7 +104,7 @@ $config['resourceTypes'][] = array(
 	'name'              => 'Images',
 	'directory'         => 'images',
 	'maxSize'           => 0,
-	'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
+	'allowedExtensions' => 'bmp,gif,jpeg,jpg,png,svg',
 	'deniedExtensions'  => '',
 	'backend'           => 'default'
 );
@@ -143,7 +143,7 @@ $config['checkDoubleExtension'] = true;
 $config['disallowUnsafeCharacters'] = false;
 $config['secureImageUploads'] = true;
 $config['checkSizeAfterScaling'] = true;
-$config['htmlExtensions'] = array('html', 'htm', 'xml', 'js');
+$config['htmlExtensions'] = array('html', 'htm', 'xml', 'js', 'svg');
 $config['hideFolders'] = array('.*', 'CVS', '__thumbs');
 $config['hideFiles'] = array('.*');
 $config['forceAscii'] = false;
@@ -188,6 +188,8 @@ $config['csrfProtection'] = true;
 $config['headers'] = array();
 
 /*============================== End of Configuration =================================*/
+
+
 
 // Config must be returned - do not change it.
 return $config;

@@ -49,9 +49,9 @@
 				
 				
 				<li class="nav-item">
-					<a href="{{ route('promo-slides.index') }}" class="nav-link @if(Str::of(request()->route()->uri)->contains('admin/promo-slides')) active @endif">
+					<a href="{{ route('landing.promo-slides.index') }}" class="nav-link @if(Str::of(request()->route()->uri)->contains('admin/landing')) active @endif">
 						<i class="nav-icon fas fa-file"></i>
-						<p>Главная стр.</p>
+						<p>Лендинг</p>
 					</a>
 				</li>
 				
@@ -63,7 +63,7 @@
 				</li>
 				
 				<li class="nav-item">
-					<a href="{{ route('extra-data.index') }}" class="nav-link @if(Str::of(request()->route()->uri)->contains('admin/extra-data')) active @endif">
+					<a href="{{ route('extra-data.index') }}" class="nav-link">
 						<i class="nav-icon far fa-address-book"></i>
 						<p>Дополн. данные</p>
 					</a>

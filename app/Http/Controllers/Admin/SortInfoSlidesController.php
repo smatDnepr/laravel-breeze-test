@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\PromoSlide;
+use App\Models\InfoSlide;
 use Illuminate\Http\Request;
 
-class SortPromoSlidesController extends Controller
+class SortInfoSlidesController extends Controller
 {
     public function sortSlides(Request $request)
 	{
 		$data = $request->all();
 		
 		foreach ($data as $key => $value) {
-			$slide = PromoSlide::find( $key );
+			$slide = InfoSlide::find( $key );
 			$slide->update(['order'=> $value]);
 		}
 		

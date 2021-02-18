@@ -4,12 +4,12 @@
 
 @section('content')
 <div class="card-body p-0">
-    <form action="{{ route('promo-slides.store') }}" method="post">
+    <form action="{{ route('landing.promo-slides.store') }}" method="post">
         @csrf
         @method('post')
 		
 		<div class="card-header">
-			<button class="btn btn-outline-primary" type="button" onclick="window.location.href='{{ route('promo-slides.index') }}'; return false;">Назад</button>
+			<a class="btn btn-outline-primary btn-back" href="{{ route('landing.promo-slides.index') }}">Назад</a>
             <button type="submit" class="btn btn-primary">Сохранить</button>
 		</div>
 
@@ -70,7 +70,7 @@
         </div>
 
         <div class="card-footer">
-			<a class="btn btn-outline-primary" href="{{ route('promo-slides.index') }}">Назад</a>
+			<a class="btn btn-outline-primary" href="{{ route('landing.promo-slides.index') }}">Назад</a>
             <button type="submit" class="btn btn-primary">Сохранить</button>
         </div>
 		
